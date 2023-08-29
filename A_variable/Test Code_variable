@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test1 : MonoBehaviour
+{
+    // 캐릭터 프로필을 변수로 만들어보자.
+
+    void Start()
+    {
+        string characterName = "유니티";
+        int age = 20;
+        float height = 170.5f;
+        bool isMale = true;
+
+        // 생성할 변수를 콘솔에서 확인
+        Debug.Log("캐릭터 이름 : " + characterName);
+        Debug.Log("캐릭터 나이 : " + age);
+        Debug.Log("캐릭터 키 : " + height);
+        Debug.Log("캐릭터 성별은 남성인가? : " + isMale);
+    }
+}
