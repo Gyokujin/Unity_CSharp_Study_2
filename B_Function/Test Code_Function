@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test2 : MonoBehaviour
+{
+    int a = 3;
+    int b = 4;
+    int c;
+
+    void Start()
+    {
+        c = PlusCalcul(a, b);
+        Debug.Log("a와 b를 더한 값은 : " + c);
+    }
+
+    int PlusCalcul(int a, int b)
+    {
+        c = a + b;
+        return c;
+    }
+}
