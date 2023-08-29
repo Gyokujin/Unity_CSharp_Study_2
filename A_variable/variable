@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Variable : MonoBehaviour
+{
+    void Start()
+    {
+        Debug.Log("Hello World");
+
+        // 타입 변수이름 = 값 선언과 동시에 초기값을 미리 할당 가능하다.
+        
+        int silver = 45000; // int : 정수 (약 -21억 ~ 21억)
+        Debug.Log(silver);
+
+        long gold = 20000000000; // long : 정수 (약 -922경 ~ 922경)
+        Debug.Log(gold);
+
+        float minimal = 0.05f; // float : 소수 (소수 6자리). 값 끝에 f를 붙여야 한다.
+        Debug.Log(minimal);
+        
+        double superMin = 0.01234567d; // double : 소수 (소수 14자리). 값 끝에 d를 붙여야 한다.
+        Debug.Log(superMin);
+
+        string word = "ABCD"; // string : 문자열 (모든문자). " "로 감싼다.
+        Debug.Log(word);
+
+        bool truth = false; // bool : 참(true) / 거짓(false)
+        Debug.Log(truth);
+
+        char alphabet = 'y'; // char : 문자 1글자만 저장. ' '로 감싼다.
+        Debug.Log(alphabet);
+
+        short minNum = 650; // short : 정수 (약 -6만 ~ 6만)
+        Debug.Log(minNum);
+
+        silver = silver + 100;
+        Debug.Log(silver);
+    }
+}
