@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Class_Intensive : MonoBehaviour
+{
+    void Start()
+    {
+        Warrior warrior1 = new Warrior(); // 클래스는 참조타입이기 때문에 new로 생성한다.
+        Warrior warrior2 = new Warrior();
+
+        warrior1.damage = 5;
+        warrior2.damage = 10;
+
+        warrior1 = warrior2; // 참조 타입이기 때문에 warrior1과 warrior2가 가지고 있는 값은 서로 같아진다. 변화해도 같이 변하게 된다.
+        warrior2.defence = 20;
+
+        Debug.Log("전사1 공격력 : " + warrior1.damage); // 10
+        Debug.Log("전사1 방어력 : " + warrior1.defence); // 20
+
+        Debug.Log("전사2 공격력 : " + warrior2.damage); // 10
+        Debug.Log("전사2 방어력 : " + warrior2.defence); // 20
+
+        warrior1.damage = 15; // 이 방법 역시 warrior2에도 변화를 준다.
+        warrior2.defence = 25;
+
+        Debug.Log("전사1 공격력 : " + warrior1.damage); // 15
+        Debug.Log("전사1 방어력 : " + warrior1.defence); // 25
+
+        Debug.Log("전사2 공격력 : " + warrior2.damage); // 15
+        Debug.Log("전사2 방어력 : " + warrior2.defence); // 25
+    }
+
+    // 클래스
+    // 만들 대상(과 관련된 함수 변소 코드묶음)을 정의하는 틀
+
+    // 접근 제한자
+    // public : 클래스 외부에서 멤버에 접근 가능
+    // private : 클래스 내부에서만 멤버에 접근 가능
+    // protected : 클래스 내부와 파생 클래스(상속 클래스)에서만 멤버에 접근 가능
+}
+
+class Warrior
+{
+    public int damage; // 클래스 멤버. 클래스에 속한 변수 함수를 클래스의 멤버라고 부른다.
+    public int defence = 10;
+    private int hp;
+    int mp; // 접근 제한자를 입력하지 않으면 기본으로 private이 부여된다.
+
+    void Attack()
+    {
+
+    }
+}
