@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test4 : MonoBehaviour
+{
+    int force = 80;
+    int leaderShip = 80;
+    int intelligence = 50;
+    int politic = 70;
+
+    void Start()
+    {
+        if (force > 70 && leaderShip > 70)
+        {
+            Debug.Log("병사 징병에 성공하였습니다.");
+        }
+
+        if (intelligence > 65 || politic > 65)
+        {
+            Debug.Log("내정 관리를 성공하였습니다.");
+        }
+    }
+}
