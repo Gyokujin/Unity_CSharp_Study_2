@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LogicalOperator : MonoBehaviour
+{
+    int c = 7;
+    int d = 10;
+    int e = 5;
+
+    void Start()
+    {
+        // 논리 연산자
+        
+        // a && b : and. 조건 a와 조건 b가 모두 참이여야 결과가 참(true)
+        if (c < d && d != e)
+        {
+            Debug.Log(true);
+        }
+        
+        // a || b : or. 조건 a와 조건 b중 하나라도 참이면 결과가 참(true)
+        if (c > d || c >= e)
+        {
+            Debug.Log(true);
+        }
+
+        // !a : not. a가 참이면 거짓(false), a가 거짓이면 참(true)
+        bool truth = false;
+        Debug.Log(!truth); // false의 부정이기 때문에 true로 변환된다.
+    }
+}
