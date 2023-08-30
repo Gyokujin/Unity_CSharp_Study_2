@@ -1,0 +1,80 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Inheritance : MonoBehaviour
+{
+    void Start()
+    {
+        Uther uther = new Uther();
+        Player player = new Player();
+
+        Debug.Log("플레이어 HP : " + player.hp + " 플레이어 공격력 : " + player.damage);
+        Debug.Log("우서 HP : " + uther.hp + " 우서 공격력 : " + uther.damage);
+
+        Debug.Log("플레이어가 우서를 공격합니다.");
+        int enemyHP = player.Attack(uther.hp);
+        Debug.Log("우서의 남은 HP : " + enemyHP);
+
+        Debug.Log("우서가 플레이어를 공격합니다.");
+        int playerHP = uther.Attack(player.hp);
+        Debug.Log("플레이어의 남은 HP : " + playerHP);
+
+        Debug.Log("******** 전투종료 ********");
+    }
+
+    // 상속 : 부모 클래스를 토대로 자식 클래스를 만드는 것 (확장의 개념)
+    // protected : 클래스 내부와 파생 클래스 (상속 클래스)에서만 멤버에 접근 가능
+
+}
+
+class Hero
+{
+    public int hp = 20;
+    public int damage = 5;
+
+    public void Attack()
+    {
+        Debug.Log("공격한다.");
+    }
+
+    public void Recall()
+    {
+        Debug.Log("기지로 복귀한다.");
+    }
+}
+
+class Uther : Hero
+{
+    int magicPow = 10;
+
+    public int Attack(int playerHP)
+    {
+        playerHP = playerHP - damage;
+        return playerHP;
+    }
+
+    public int Hit(int playerHP)
+    {
+        playerHP = playerHP -= damage;
+        return playerHP;
+    }
+
+    public void Heal()
+    {
+        hp += magicPow;
+        Debug.Log("우서는 힐을 사용했다.");
+    }
+}
+
+class Player
+{
+    public int hp = 30;
+    public int damage = 10;
+
+    public int Attack(int enemyHP)
+    {
+        enemyHP = enemyHP - damage;
+        return enemyHP;
+    }
+}
