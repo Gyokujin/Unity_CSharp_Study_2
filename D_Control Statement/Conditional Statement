@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ConditionalStatement : MonoBehaviour
+{
+    int appeal = 85;
+
+    void Start()
+    {
+        // 조건문
+        // if문 : if문의 조건이 참(true)이면 if문 안의 코드를 실행. 거짓(false)이면 무시하고 넘어간다.
+        // else문 : if문 블록 끝에 쓰며 if문의 조건이 거짓일 때 실행
+        // else if문 : else문에 조건을 넣어서 그 조건이 참이면 실행
+
+        if (appeal >= 95)
+        {
+            Debug.Log("장수 등용에 대성공하였습니다.");
+        }
+        else if (appeal >= 80)
+        {
+            Debug.Log("장수 등용에 성공하였습니다.");
+        }
+        else
+        {
+            Debug.Log("장수 등용에 실패하였습니다.");
+        }
+    }
+}
