@@ -1,0 +1,143 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Operator : MonoBehaviour
+{
+    void Start()
+    {
+        int a = 10, b = 5, c = 3, d = 2;
+
+        // 산술 연산자
+        // a + b (더하기)
+        // a - b (빼기)
+        // a * b (곱하기)
+        // a / b (나눗셈의 몫)
+        // a % b (나눗셈의 나머지)
+
+        a = a / b; // 2
+        Debug.Log(a);
+
+        c = c % d; // 1
+        Debug.Log(c);
+
+        a = 3;
+        b = 0;
+        c = 5;
+        d = 0;
+
+        // 증감 연산자 : 정수형 변수에 1씩 더하거나 빼는 연산자
+        // ++ : 1씩 더한다
+        // -- : 1씩 뺀다
+
+        // 전위 증감 연산자 : ++a, --b
+        // 후위 증감 연산자 : a++, b--
+
+        b = ++a; // 1. a = a + 1; 2. b = a; 순서로 실행된다. a와 b가 같은 변화된 갖게된다.
+        Debug.Log(a);
+        Debug.Log(b);
+
+        d = --c;
+        Debug.Log(c);
+        Debug.Log(d);
+
+        b = a++; // 1. a = a; 2. a = a + 1; 순서로 실행된다. b는 기존의 a 값을 a는 1이 더해진 값을 갖는다.
+        Debug.Log(b);
+        Debug.Log(a);
+
+        d = c--;
+        Debug.Log(c);
+        Debug.Log(d);
+
+        a = 5;
+        b = 3;
+
+        // 대입 연산자 : =. 좌측의 변수가 우측의 값을 갖게 된다.
+
+        // 복합 대입 연산자 : 산술 연산의 결과를 바로 대입한다.
+        // a += b (a = a + b)
+        // a -= b (a = a - b)
+        // a *= b (a = a * b)
+        // a /= b (a = a / b)
+        // a %= b (a = a % b)
+
+        a += b; // 8
+        Debug.Log(a);
+
+        a -= b; // 5
+        Debug.Log(a);
+
+        a *= b; // 15
+        Debug.Log(a);
+
+        a /= b; // 5
+        Debug.Log(a);
+
+        a %= b; // 2
+        Debug.Log(a);
+
+        a = 3;
+        b = 2;
+
+        // 비교 연산자
+        // a < b (a가 b보다 작으면 참)
+        // a <= b (a가 b보다 작거나 같으면 참)
+        // a > b (a가 b보다 크면 참)
+        // a >= b (a가 b보다 크거나 같으면 참)
+        // a == b (a와 b가 같으면 참)
+        // a != b (a와 b가 다르면 참)
+
+        if (a < 4)
+        {
+            Debug.Log("a는 4보다 작습니다.");
+        }
+
+        if (a > b)
+        {
+            Debug.Log("a는 b보다 큽니다.");
+        }
+
+        if (a >= 3)
+        {
+            Debug.Log("a는 3보다 크거나 같습니다.");
+        }
+
+        if (a <= 5)
+        {
+            Debug.Log("a는 5보다 작거나 같습니다.");
+        }
+
+        if (a == 3)
+        {
+            Debug.Log("a는 3과 같습니다.");
+        }
+
+        if (a != 100)
+        {
+            Debug.Log("a는 100과 같지 않습니다.");
+        }
+
+        a = 5;
+        b = 3;
+
+        // 논리 연산자
+        // a && b (and) a와 b가 모두 참이면 참
+        // a || b (or) a 또는 b 중 하나라도 참이면 참
+        // !a (not) a가 참이면 거짓, 거짓이면 참
+
+        if (a == 5 && b == 3)
+        {
+            Debug.Log("a는 5, b는 3입니다.");
+        }
+
+        if (a == 4 || b == 3)
+        {
+            Debug.Log("a가 4이거나 b가 3입니다.");
+        }
+
+        if (a != 3)
+        {
+            Debug.Log("a가 3이 아닙니다.");
+        }
+    }
+}
