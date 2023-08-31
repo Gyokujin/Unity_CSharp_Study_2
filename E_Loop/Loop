@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Loop : MonoBehaviour
+{
+    void Start()
+    {
+        int a = 0;
+
+        // while문 : 조건이 참인 동안 {}안에 있는 코드를 반복 실행한다.
+        
+        while (a < 10)
+        {
+            Debug.Log(a + "번째 입니다");
+            a++;
+        }
+
+        int b = 0;
+
+        // for문 : 조건이 참인 동안 {}안에 있는 코드를 반복 실행한다. 대신 인자값이 주어지며 반복 실행할 횟수를 정할수 있다.
+        // for (초기식; 조건식; 증감식)
+        // 초기식 : 변수의 초기값
+        // 조건식 : 반복 실행을 할 조건
+        // 증감식 : 증가하거나 감소하는 등 반복 처리할 식
+        
+        for (int i = 0; i < 100; i++)
+        {
+            Debug.Log(i + "번째 입니다");
+            b++;
+        }
+
+        Debug.Log(b);
+    }
+}
