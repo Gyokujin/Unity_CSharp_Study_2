@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Memory : MonoBehaviour
+{
+    // 메모리구조 : 코드, 데이터, 힙, 스택
+    // 코드 : 코드 글자가 저장되는 영역 (텍스트 영역)
+    // 데이터 : 전역 변수(선언하면 어디서든 접근 가능한 변수. static과 유사하다)와 정적 변수가 저장되는 영역
+    // 스택 : 변수를 선언하는 것과 같이 값의 주소를 저장한다. 함수의 호출이 끝나면 할당된 메모리를 다시 돌려 받는다.
+    // 힙 : new 선언과 같이 새로운 객체를 만들 때 해당 객체를 담는다. 직접 메모리에서 제거하지 않으면 남게 된다.
+
+    void Start()
+    {
+        Test1();
+        Test2();
+    }
+
+    void Test1()
+    {
+        int num1 = 1; // 지역변수로 함수가 끝나면 버려진다. 원활한 메모리 관리를 위해 private과 public을 구분한다
+        int num2 = 2;
+        float num3;
+        char num4;
+        bool num5;
+
+        Debug.Log(num1);
+        Debug.Log(num2);
+    }
+
+    public class Gunner
+    {
+        public int hp = 10;
+    }
+
+    void Test2()
+    {
+        Gunner gunner1 = new Gunner(); // 객체를 만든후 해당 주소를 가진다. 좌측은 stack, 우측은 heap
+        Gunner gunner2 = new Gunner();
+        Gunner gunner3 = new Gunner();
+
+        gunner1.hp = 100;
+        gunner2.hp = 200;
+        gunner3.hp = 300;
+
+        // 함수가 끝난후 지역변수의 역할이 끝난후 stack은 삭제된다. 하지만 stack을 잃은 heap은 메모리에 남아 있는다. (다만 C#에서는 가비지 컬렉션으로 지워진다.)
+    }
+}
