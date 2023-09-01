@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bit : MonoBehaviour
+{
+    // 비트 : 메모리의 가장 작은 단위 / 공간
+    // 1바이트(byte)는 8비트로 0~255의 값을 가진다.
+
+    void Start()
+    {
+        int num1 = 8 << 2; // 8을 이진법으로 00001000에서 두 칸 앞으로 이동한다. 00100000을 십진법으로 바꾼 값.
+        Debug.Log(num1); // 32
+
+        int num2 = 8 >> 2; // 00001000에서 두 칸 뒤로 이동. 00000010
+        Debug.Log(num2); // 2
+
+        // 음수 표현 : 자료형이 음수를 표현 가능한 sbyte(-128 ~128)일 때 가능하다.
+        // 1(00000001)을 반전 (11111110)하고 1을 더한다. (11111111)
+    }
+}
