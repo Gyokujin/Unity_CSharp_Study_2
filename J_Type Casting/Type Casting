@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TypeCasting : MonoBehaviour
+{
+    void Start()
+    {
+        // 형변환
+
+        // 크기가 서로 다른 정수형 형변환
+        sbyte a = 127;
+        Debug.Log(a);
+
+        int b = (int)a;
+        Debug.Log(b);
+
+        int c = 128;
+        Debug.Log(c);
+
+        sbyte d = (sbyte)c; // sbyte의 최댓값보다 크기 때문에 오버플로우 현상이 일어난다.
+        Debug.Log(d);
+
+        // 크기가 서로 다른 실수형 형변환
+        float e = 69.6875f;
+        Debug.Log(e);
+
+        double f = (double)e;
+        Debug.Log(f);
+
+        float g = 0.1f;
+        Debug.Log(g);
+
+        double h = (double)g; // 실수형 형변환은 같은 값이 아닌 근삿값으로 주는 경우가 많다.
+        Debug.Log(h);
+
+        // 부호가 있는 정수 형변환
+        int i = 200;
+        Debug.Log(i);
+
+        uint j = (uint)i;
+        Debug.Log(j);
+
+        // 부호가 없는 정수 형변환
+        int k = -30;
+        Debug.Log(k);
+
+        uint l = (uint)k; // uint의 최솟값보다 작기 때문에 언더플로우 현상이 일어난다.
+        Debug.Log(l);
+
+        // 실수와 정수 형변환
+        float m = 0.9f;
+        int n = (int)m; // 내림 계산을 한다.
+        Debug.Log(n);
+
+        float o = 1.1f;
+        int p = (int)o; // 정수 부분만 자른다.
+        Debug.Log(p);
+
+        // 문자열과 숫자형 형변환
+        int q = int.Parse("12345");
+        Debug.Log(q);
+
+        float r = float.Parse("123.45");
+        Debug.Log(r);
+
+        int s = 12345;
+        string t = s.ToString();
+        Debug.Log(t);
+
+        float u = 123.45f;
+        string v = u.ToString();
+        Debug.Log(v);
+    }
+}
