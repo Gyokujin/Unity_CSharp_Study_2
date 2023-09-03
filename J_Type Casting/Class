@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Class : MonoBehaviour
+{
+    class Monster
+    {
+        public void Grr()
+        {
+            Debug.Log("Grr...");
+        }
+    }
+
+    class Orc : Monster { } // 파생 클래스 (자식 클래스1)
+    class Troll : Monster { } // 파생 클래스 (자식 클래스2)
+
+    void Start()
+    {
+        Orc orc = new Orc(); // 자식 클래스에서 부모 클래스로의 형변환은 가능하다.
+        Monster monster = (Monster)orc;
+        monster.Grr();
+        orc = (Orc)monster;
+        orc.Grr();
+
+        // is, as
+        if (orc is Monster) // is : 좌측의 객체가 우측의 클래스로 형변환이 참, 불가능하면 거짓을 반환
+        {
+            monster = (Monster)orc;
+            monster.Grr();
+        }
+
+        orc = monster as Orc; // as : 형변환이 가능하면 형변환을 진행하고 불가능하면 null을 대입한다.
+        orc.Grr();
+
+        // 암시적 형변환 : 형변환을 명시하지 않아도 자동 형변환. 작은 범위에서 큰 범위로만 가능하다.
+        monster = orc;
+        monster.Grr();
+
+        // 명시적 형변환 : 큰 범위에서 작은 범위로 형변환등 값의 변화 또는 오버플로우등의 문제를 감안하고 형변환
+        double a = 100_000_000_000d;
+        int b = (int)a;
+        Debug.Log(b);
+    }
+}
