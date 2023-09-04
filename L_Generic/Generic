@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Generic : MonoBehaviour
+{
+    public struct Struct
+    {
+
+    }
+
+    void Start()
+    {
+        int[] sourceArray1 = { 1, 2, 3, 4, 5 };
+        int[] targetArray1 = new int[sourceArray1.Length];
+        Copy<int>(sourceArray1, targetArray1);
+
+        string[] sourceArray2 = { "하나", "둘", "셋", "넷", "다섯" };
+        string[] targetArray2 = new string[sourceArray2.Length];
+        Copy<string>(sourceArray2, targetArray2);
+
+        Struct str1;
+        Struct str2;
+        Copy2<Struct>(str1, str2);
+    }
+
+    // 제네릭 (일반화) : 특수한 개념에서 공통된 개념을 찾아 묶는 것
+    public void Copy<T>(T[] source, T[] target) // 형식 매개변수(<T>) : 제네릭 자료형을 나타낸다. 기존의 Object 자료형이 아닌 T로 대체한다.
+    {
+        for (int i = 0; i < source.Length; i++)
+        {
+            target[i] = source[i];
+        }
+
+        Debug.Log("Copy End");
+    }
+
+    public void Copy2<T>(T source, T target) where T : struct // 제약 조건 : where T : .. 로 선언하며 선언한 형식으로만 호출되게 가능하다.
+    {
+        Debug.Log("Copy End2");
+    }
+}
