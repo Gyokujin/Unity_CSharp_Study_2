@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Array : MonoBehaviour
+{
+    void Start()
+    {
+        // 배열 : 미리 크기와 자료형을 선언하고 값을 저장한다.
+        int[] arr = new int[40];
+        arr[0] = 100;
+
+        arr = new int[50]; // 새롭게 배열을 할당하면 기존의 값은 보존되지 않는다.
+        Debug.Log(arr[0]);
+        Debug.Log(arr.Length);
+    }
+}
