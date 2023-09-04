@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class _Queue : MonoBehaviour
+{
+    void Start()
+    {
+        // Queue : 스택과 반대로 먼저 추가한 데이터부터 먼저 지운다. 선입선출
+        Queue queue = new Queue();
+        queue.Enqueue(1); // 값을 추가하는 명령어
+        queue.Enqueue(2); // 1, 2
+        queue.Enqueue(3); // 1, 2, 3
+
+        queue.Dequeue(); // 가장 앞의 값을 뺀다. 2, 3
+        queue.Enqueue(5); // 2, 3, 5
+        queue.Enqueue(6); // 2, 3, 5, 6
+        queue.Dequeue(); // 3, 5, 6
+
+        foreach (int n in queue)
+        {
+            Debug.Log(n);
+        }
+    }
+}
