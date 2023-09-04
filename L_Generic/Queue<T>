@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class QueueT : MonoBehaviour
+{
+    void Start()
+    {
+        // Queue<T>
+        Queue<int> queue = new Queue<int>(); // Queue의 일반화
+
+        queue.Enqueue(10);
+        queue.Enqueue(20);
+        queue.Enqueue(30);
+        queue.Enqueue(40);
+        queue.Enqueue(50);
+
+        queue.Dequeue();
+        queue.Dequeue();
+
+        foreach (int n in queue)
+        {
+            Debug.Log(n);
+        }
+    }
+}
