@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HashTable : MonoBehaviour
+{
+    void Start()
+    {
+        // Hash Table : 키와 값으로 자료를 보관하는 형태로 자료형은 object로 자유롭게 저장 가능하다. 속도가 아주 빠르다.
+        Hashtable ht = new Hashtable();
+        ht["Book"] = "책";
+        ht["Cook"] = "요리";
+        ht["Wind"] = "바람";
+        ht[1.5f] = 15;
+        ht[true] = 5; // bool 타입 또한 가능하다
+
+        Debug.Log(ht["Book"]);
+        Debug.Log(ht["Cook"]);
+        Debug.Log(ht["Wind"]);
+        Debug.Log(ht[1.5f]);
+        Debug.Log(ht[true]);
+    }
+}
