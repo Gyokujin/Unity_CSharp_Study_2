@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class _Stack : MonoBehaviour
+{
+    // Stack : 데이터를 추가 할때는 인덱스 값이 증가하며 추가. 지울때는 가장 높은(가장 마지막에 추가한) 값부터 지운다. 선입후출
+    void Start()
+    {
+        Stack stack = new Stack();
+        stack.Push(1); // 값을 추가하는 명령어
+        stack.Push(2); // 1, 2
+        stack.Push(3); // 1, 2, 3
+
+        stack.Pop(); // 가장 마지막의 값을 뺀다. 1, 2
+        stack.Pop(); // 1
+        stack.Push(5); // 1, 5
+        stack.Push(4); // 1, 5, 4
+        stack.Pop(); // 1, 5
+
+        foreach (int n in stack)
+        {
+            Debug.Log(n);
+        }
+    }
+}
