@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Arraylist : MonoBehaviour
+{
+    void Start()
+    {
+        // ArrayList : 배열과 달리 크기를 미리 선언하지 않아도 되고 인자값을 object 타입으로 받는다. 자유롭게 값을 추가하고 지울수 있으나 속도가 느리다.
+        ArrayList list1 = new ArrayList();
+        list1.Add("Hello");
+        list1.Add(6);
+        list1.Add("World");
+        list1.Add(true);
+
+        list1.RemoveAt(0);
+
+        foreach (var v in list1)
+        {
+            Debug.Log(v);
+        }
+
+        ArrayList list2 = new ArrayList();
+        list2.Add(10);
+        list2.Add(20);
+        list2.Add(30);
+
+        list2.RemoveAt(1); // 1번 인덱스(20) 삭제
+        list2.Remove(10); // 10 삭제. 30 남음
+
+        list2.Add(20); // 30, 20
+        list2.Insert(1, 15); // 1번 인덱스에 15 추가. 30, 15, 20
+
+        foreach (int n in list2)
+        {
+            Debug.Log(n);
+        }
+    }
+}
