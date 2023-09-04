@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GenericClass : MonoBehaviour
+{
+    public class return_int
+    {
+        int num;
+
+        public int Return()
+        {
+            Debug.Log("Return End 0");
+            return num;
+        }
+    }
+
+    public class return_float // 자료형만 다를 뿐이라 비효율적이다.
+    {
+        float num;
+
+        public float Return()
+        {
+            Debug.Log("Return End 1");
+            return num;
+        }
+    }
+
+    public class return_Generic<T> // 클래스 또한 형식 매개변수가 가능하다.
+    {
+        private T num;
+
+        public T Return()
+        {
+            Debug.Log("Return End 2");
+            return num;
+        }
+    }
+
+    void Start()
+    {
+        return_int return_Int = new return_int();
+        return_Int.Return();
+
+        return_Generic<int> intGeneric = new return_Generic<int>();
+        intGeneric.Return();
+        return_Generic<float> floatGeneric = new return_Generic<float>();
+        floatGeneric.Return();
+    }
+}
