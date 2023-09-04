@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ListT : MonoBehaviour
+{
+    void Start()
+    {
+        // List<T> : ArrayList를 일반화하여 미리 자료형을 선언한 컬렉션이다.
+        List<int> list = new List<int>();
+
+        list.Add(10); // ArrayList와 명령어는 같다.
+        list.Add(20);
+        list.Add(30);
+        list.Add(40);
+        list.Add(50);
+        // 10, 20, 30, 40, 50
+
+        list.RemoveAt(0); // 20, 30, 40, 50
+        list.Remove(40); // 20, 30, 50
+        list.Insert(1, 25); // 20, 25, 30, 50
+
+        foreach (int n in list)
+        {
+            Debug.Log(n);
+        }
+    }
+}
