@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ConditionalOperator : MonoBehaviour
+{
+    void Start()
+    {
+        // 삼항 연산자
+        int num = 5;
+        string result;
+
+        result = (num % 2 == 0) ? "짝수" : "홀수"; // 조건식 ? 표현식1 : 표현식2. 조건식이 참이면 표현식1을 거짓이면 표현식2를 대입한다.
+        Debug.Log(result);
+    }
+}
