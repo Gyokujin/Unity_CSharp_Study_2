@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Switch : MonoBehaviour
+{
+    int num = 2;
+
+    void Start()
+    {
+        // switch : if문의 변형된 형태로 조건 기준을 상수, 문자로 하고 같은 조건의 명령어를 실행한다.
+        switch (num) // 조건식 : num과 같은 case를 찾아서 실행한다.
+        {
+            case 1:
+                Debug.Log("one"); // 실행할 코드
+                break;
+            case 2:
+                Debug.Log("two");
+                break;
+            case 3:
+                Debug.Log("three");
+                break;
+            default: // default : else와 같은 의미로 다른 조건이 모두 거짓일경우 실행한다.
+                Debug.Log("none");
+                break;
+        }
+    }
+}
