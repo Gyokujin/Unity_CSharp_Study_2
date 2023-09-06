@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Grammar : MonoBehaviour
+{
+    void Start()
+    {
+        // 예약여 : 문법을 표현하기 위해 미리 예약된 언어(sbyte, byte, int, float)
+        int a = 5;
+
+        // 식별자 : 임의로 이름을 지을 수 있는 단어(변수명, 함수명, 클래스명)
+        // 숫자로 시작 할 수 없으며 특수문자는 "_"만 가능하다.
+        // 한글도 가능은 하다.
+        int b = 10;
+        Test();
+
+        // 리터럴 : 소스코드에 포함된 값
+        Literal();
+
+        // 상수 : 값이 바뀌지 않는 식별자(const)
+        int n = Const();
+    }
+
+    void Test()
+    {
+        Debug.Log("Test");
+    }
+
+    void Literal()
+    {
+        string next = "one";
+        int n = 10;
+        char ch = 'N';
+        bool result = true;
+    }
+
+    int Const()
+    {
+        const int num = 15;
+        Debug.Log(num);
+        return num;
+    }
+}
