@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Goto : MonoBehaviour
+{
+    void Start()
+    {
+        // goto : 해당 레이블로 이동한다.
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                for (int k = 0; k < 5; k++)
+                {
+                    if (i == 1 && k == 2)
+                    {
+                        goto EXIT_FOR;
+                    }
+                }
+            }
+        }
+
+    EXIT_FOR: // 레이블 문은 식별자에 ":" 을 붙인다. 
+        Debug.Log("EXIT");
+    }
+}
