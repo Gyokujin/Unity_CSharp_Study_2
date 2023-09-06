@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Foreach : MonoBehaviour
+{
+    void Start()
+    {
+        int[] arr = { 1, 2, 3, 4, 5 };
+
+        // foreach : 배열, 컬렉션의 모든 요소를 순회하는 반복문
+        foreach (int num in arr) // 자료형 변수명 in 배열이나 컬렉션
+        {
+            Debug.Log(num);
+        }
+    }
+}
