@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Example2 : OOPEncapsulation
+{
+    OOPEncapsulation capsule = new OOPEncapsulation();
+
+    void Start()
+    {
+        Print2(); // protected는 자식 클래스에게도 접근 권한이 있기 때문에 함수를 호출 할 수 있다.
+        Print3(); // public은 외부에서도 접근이 가능하기 때문에 함수를 호출 할 수 있다.
+
+        Debug.Log(capsule.GetNum()); // 변수 num의 값을 확인하는 GetNum의 함수를 public으로 선언하였기 때문에 접근 가능하다.
+        capsule.SetNum(15); // SetNum 함수 또한 public 이므로 접근 가능하다. 다만 set의 조건으로 인해 저장되지 않는다.
+        Debug.Log(capsule.GetNum());
+
+        Debug.Log(capsule.Count); // count는 프로퍼티를 가지고 있기 때문에 메소드 없이 접근 가능하다.
+        capsule.Count++; // set 또한 동일하다.
+        Debug.Log(capsule.Count);
+
+        capsule.Cost++;
+        Debug.Log(capsule.Cost);
+    }
+}
