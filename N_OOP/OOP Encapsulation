@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OOPEncapsulation : MonoBehaviour
+{
+    // 캡슐화 : 관련있는 데이터와 메소드로 객체를 만들고, 객체 밖에서 알아야 할 필요가 없는 내부 멤버를 숨기는 것. 정보은닉
+
+    private void Print1() // private : 외부에서 접근이 불가능하다.
+    {
+        Debug.Log("Print1");
+    }
+
+    protected void Print2() // protected : 자식 클래스만 외부에서 접근이 가능하다.
+    {
+        Debug.Log("Print2");
+    }
+
+    public void Print3() // public : 외부에서도 자유롭게 접근이 가능하다.
+    {
+        Debug.Log("Print3");
+    }
+
+    int num = 10; // 접근 제한자를 따로 표기하지 않으면 기본값인 private으로 지정된다.
+
+    public int GetNum() // 접근자 : private 변수인 num에 접근 가능하도록 public 함수로 접근하게 한다.
+    {
+        return num;
+    }
+
+    public void SetNum(int value) // 설정자
+    {
+        if (value >= 15) // 변수에 조건을 걸어 문제를 미리 예방할 수 있다.
+            return;
+
+        num = value;
+    }
+
+    int count = 5;
+
+    public int Count // 프로퍼티(property) : 접근자, 설정자 메소드를 축약한 형태
+    {
+        get { return count; } // 접근자
+        set { count = value; } // 설정자. SetNum 함수와 동일한 형태이다.
+    }
+
+    public int Cost { get; set; } // 자동 구현 프로퍼티 : 프로퍼티를 더욱 축약한 형태
+}
