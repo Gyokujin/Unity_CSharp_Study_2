@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Attribute : MonoBehaviour
+{
+    public int num1; // public은 인스펙터에 표시된다.
+
+    // 애트리뷰트(attribute) : 코드에 대한 부가 정보를 기록하고 읽을 수 있는 기능
+    [SerializeField] // private 변수임에도 인스펙터에 표시되도록 한다.
+    private int num2;
+    [HideInInspector] // pulbic 변수를 인스펙터에 표시되지 않도록 한다.
+    public int num3;
+
+    protected int num4;
+
+    [field:SerializeField] // field : SerializeField로 프로퍼티 또한 인스펙터에 표시되도록 할 수 있다.
+    public int Num5 { get; set; }
+
+    public Count count = new Count();
+
+    void Start()
+    {
+        num1 = 1;
+        num2 = 2;
+        num3 = 3;
+        num4 = 4;
+
+        Debug.Log(num1);
+        Debug.Log(num2);
+        Debug.Log(num3);
+        Debug.Log(num4);
+    }
+
+    // 직렬화(Serialization) : 데이터를 byte 배열로 변환하는 작업. 게임 저장 / 네트워크 연결 시 이용
+    // 역직렬화(Deserialization) : byte 배열을 데이터로 변환하는 작업.
+}
+
+[System.Serializable] // Serializable : 해당 객체를 인스턴스화 했을때 변수들이 인스펙터에 표시되도록 할 수 있다.
+public class Count
+{
+    public int count1 = 5;
+    public int count2 = 10;
+    private int count3 = 15;
+}
