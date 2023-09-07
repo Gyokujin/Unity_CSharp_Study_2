@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Example5 : MonoBehaviour
+{
+    public class Example6
+    {
+        public virtual void OnDamaged()
+        {
+
+        }
+    }
+
+    public class Example6_1 : Example6
+    {
+        public override void OnDamaged()
+        {
+            Debug.Log("6 - 1");
+        }
+    }
+
+    public class Example6_2 : Example6
+    {
+        public override void OnDamaged()
+        {
+            Debug.Log("6 - 2");
+        }
+    }
+
+    public class Test
+    {
+        public void Attack(Example6_1 example) // 6_1과 6_2는 내부는 같지만 별개의 클래스로 구분했기 때문에 따로 작성해야 하는 번거로움이 있다.
+        {
+            example.OnDamaged();
+        }
+
+        public void Attack(Example6_2 example)
+        {
+            example.OnDamaged();
+        }
+    }
+
+    public void Start()
+    {
+        // Example
+        Example6_1 example1 = new Example6_1();
+        Example6_2 example2 = new Example6_2();
+
+        // Test
+        Test test = new Test();
+
+        test.Attack(example1);
+        test.Attack(example2);
+    }
+}
