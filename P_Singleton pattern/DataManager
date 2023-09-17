@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
+
     private int i = 5;
     private static DataManager instance = null;
 
