@@ -11,19 +11,42 @@ public class Interface : MonoBehaviour
         // int num = 5; // 클래스의 특징을 가지기 때문에 변수를 가질수도 있다.
     }
 
-    public class Tiger : IAnimal
+    public interface IOnDamaged
+    {
+        public void OnDamaged();
+    }
+
+    public class Tiger : IAnimal, IOnDamaged
     {
         public void Attack() // 추상 클래스와 다르게 override를 쓰지 않는다.
         {
             Debug.Log("Tiger Attack");
         }
+
+        public void OnDamaged()
+        {
+            Debug.Log("Tiger Damaged");
+        }
     }
 
-    public class Eagle : IAnimal
+    public class Eagle : IAnimal, IOnDamaged // Interface의 특징으로 개수에 상관없이 상속 받을수 있다. 기능을 추가하는 셈이다
     {
         public void Attack()
         {
             Debug.Log("Eagle Attack");
+        }
+
+        public void OnDamaged()
+        {
+            Debug.Log("Eagle Damaged");
+        }
+    }
+
+    public class NPC : IOnDamaged
+    {
+        public void OnDamaged()
+        {
+            Debug.Log("NPC Damaged");
         }
     }
 
@@ -48,10 +71,30 @@ public class Interface : MonoBehaviour
         {
             Debug.Log("Jump");
         }
+
+        public void Attack(IOnDamaged target)
+        {
+            target.OnDamaged();
+        }
     }
 
     void Start()
     {
         // IDASH player = new IDASH(); // 인터페이스는 인스턴스 생성이 불가능하다.
+
+        Player player = new Player();
+        IOnDamaged monster1 = new Tiger();
+        IOnDamaged monster2 = new Eagle();
+        IOnDamaged npc = new NPC();
+
+        List<IOnDamaged> targetLst = new List<IOnDamaged>();
+        targetLst.Add(monster1);
+        targetLst.Add(monster2);
+        targetLst.Add(npc);
+
+        foreach (var target in targetLst) // 인터페이스로 상속 시켰기 때문에 반복문 사용도 가능해진다
+        {
+            target.OnDamaged();
+        }
     }
 }
