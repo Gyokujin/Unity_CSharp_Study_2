@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Inheritance : MonoBehaviour
+{
+    // 상속 : 프로그래밍에서 부모 클래스의 기능을 자식 클래스가 물려 받아서 쓰는 것
+    // 다중 상속 : 부모 클래스를 여러 개 상속받는 것
+    public class Monster
+    {
+        public virtual void Attack()
+        {
+
+        }
+    }
+
+    public class Orc : Monster
+    {
+        public override void Attack()
+        {
+            Debug.Log("OrcAttack");
+        }
+    }
+
+    public class Ogre : Monster
+    {
+        public override void Attack()
+        {
+            Debug.Log("OgreAttack");
+        }
+    }
+
+    // 죽음의 다이아몬드 구조 : 하나의 부모 클래스를 두개의 자식 클래스가 상속받고 다시 하나의 자식 클래스가 상속 받는 것
+    // C#에서는 특별한 경우를 제외하고는 불가능하다.
+
+    /*
+    public class ChiefOrc : Orc, Ogre 
+    {
+        public override void Attack()
+        {
+
+        }
+    }
+    */
+}
