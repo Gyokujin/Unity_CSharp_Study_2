@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Abstract : MonoBehaviour
+{
+    // 추상 클래스(Abstract class) : 자식 클래스에서 반드시 재정의 해야 될 경우 사용    
+    public abstract class Animal
+    {
+        public abstract void Attack(); // 추상 메소드 : 추상 클래스에서 정의한 함수
+        int num = 5; // 클래스의 특징을 가지기 때문에 변수를 가질수도 있다.
+    }
+
+    public class Wolf : Animal
+    {
+        public override void Attack() // 추상 클래스를 상속 받은 클래스는 추상 함수들을 우선적으로 override 해야한다.
+        {
+            Debug.Log("Wolf Attack");
+        }
+    }
+
+    public class Lion : Animal
+    {
+        public override void Attack()
+        {
+            Debug.Log("Lion Attack");
+        }
+    }
+
+    void Start()
+    {
+        // Animal animal = new Animal(); // 추상 클래스는 인스턴스화가 불가능하다.
+
+        Animal animal1 = new Wolf();
+        Animal animal2 = new Lion();
+
+        List<Animal> animals = new List<Animal>();
+        animals.Add(animal1);
+        animals.Add(animal2);
+
+        foreach (var animal in animals)
+        {
+            animal.Attack();
+        }
+    }
+}
