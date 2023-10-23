@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Static : MonoBehaviour
+{
+    // static(정적) : 사전적의미로 정적 움직이지는 않으며 필드나 메소드가 클래스의 인스턴스가 아닌 클래스 자체에 소속되도록 한다
+
+    public class Monster
+    {
+        public static int score = 0;
+        
+        public void Dead()
+        {
+            // 몬스터가 죽으면 스코어를 증가시키자
+            score++;
+        }
+    }
+
+    void Start()
+    {
+        Monster monster1 = new Monster();
+        Monster monster2 = new Monster();
+        Monster monster3 = new Monster();
+
+        monster1.Dead();
+        monster2.Dead();
+        monster3.Dead();
+        Debug.Log(Monster.score); // score는 정적이기 때문에 그 값이 새롭게 갱신된다.
+
+        Test();
+    }
+
+    void Test()
+    {
+        int num = Monster.score;
+        Debug.Log(num);
+    }
+}
