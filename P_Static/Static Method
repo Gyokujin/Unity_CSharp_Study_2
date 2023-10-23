@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Util
+{
+    static List<GameObject> obj = new List<GameObject>(); // 정적 필드
+    public int num;
+
+    public static void FindObj(string name) // 정적 메소드
+    {
+        GameObject go = GameObject.Find(name);
+        obj.Add(go); // 정적 메소드에서 정적 필드에 접근
+    }
+
+    public static GameObject ReturnObj(int index) // 정적 메소드
+    {
+        GameObject targetObj = obj[index];
+        targetObj = new GameObject(index.ToString());
+
+        return targetObj;
+    }
+
+    public static void RemoveObj(int index) // 정적 메소드
+    {
+        obj.RemoveAt(index); // 정적 메소드에서 정적 필드에 접근
+    }
+
+    public static void CheckObj()
+    {
+        Debug.Log(obj.Count);
+    }
+}
+
+public class StaticMethod : MonoBehaviour
+{
+    void Start()
+    {
+        Util.FindObj("Test1");
+        Util.FindObj("Test2");
+        Util.FindObj("Test3");
+        Util.CheckObj();
+
+        Util.RemoveObj(1);
+        Util.CheckObj();
+
+        GameObject myObj = Util.ReturnObj(0);
+        Debug.Log(myObj.name);
+    }
+}
