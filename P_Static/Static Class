@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StaticClass : MonoBehaviour
+{
+    public class Manager
+    {
+        // new 키워드와 생성자를 이용해서 인스턴스 생성
+        public static Manager instance = new Manager(); // 싱글톤 클래스 : 클래스의 인스턴스가 단 하나 존재하는 것을 보장하는 클래스
+        public int score = 0;
+
+        private Manager() { } // 생성자를 private으로 선언
+
+        public void AddScore()
+        {
+            score++;
+        }
+
+        public void SubScore()
+        {
+            score--;
+        }
+    }
+
+    void Start()
+    {
+        // 생성자가 private 이므로 더이상의 인스턴스는 생성되지 않는다.
+        // Manager score = new Manager();
+
+        Manager.instance.score = 0;
+        Manager.instance.AddScore(); // 1
+        Manager.instance.AddScore(); // 2
+        Manager.instance.SubScore(); // 1
+
+        Debug.Log(Manager.instance.score);
+    }
+}
