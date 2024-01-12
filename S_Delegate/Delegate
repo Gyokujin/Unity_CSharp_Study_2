@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Delegate : MonoBehaviour
+{
+    // 델리게이트(대리자) : 함수의 주소값을 가지고 대신 호출
+    public delegate void MyDelegate(); // 델리게이트 타입의 정의 => 접근 제한자 + delegate + 반환 형식 + 식별자 + (매개변수)
+    public MyDelegate myDelegate; // 선언한 델리게이트 변수(객체) 선언
+
+    public delegate int MyDelegate2(int num);
+    public MyDelegate2 myDelegat2;
+
+    void Start()
+    {
+        //myDelegate = new MyDelegate(TestFunction); // C# 1.0 버전의 사용법
+        //myDelegate += TestFunction; // C# 2.0 버전의 사용법
+        //myDelegate();
+
+        testDelegate = TargetF;
+        Do(testDelegate);
+    }
+
+    public void TestFunction()
+    {
+        Debug.Log("Test");
+    }
+
+    public int TestFunction2(int num)
+    {
+        return num;
+    }
+
+    public delegate void TestDelegate(); // 델리게이트 타입선언
+    TestDelegate testDelegate;
+
+    void Do(TestDelegate del) // 매개변수로 함수를 담는게 가능하다
+    {
+        del();
+        del.Invoke();
+    }
+
+    void Do2(int num1, int num2)
+    {
+
+    }
+
+    void TargetF()
+    {
+        Debug.Log("TargetF");
+    }
+}
