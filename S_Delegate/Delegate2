@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Delegate2 : MonoBehaviour
+{
+    public delegate void TestDelegate();
+    TestDelegate testDelegate;
+
+    void Start()
+    {
+        TestDelegate result = Do();
+        result();
+        result.Invoke();
+
+        testDelegate = TargetF;
+        testDelegate();
+    }
+
+    TestDelegate Do()
+    {
+        Debug.Log("Do");
+        return TargetF; // 함수 참조
+    }
+
+    void TargetF()
+    {
+        Debug.Log("TargetF");
+    }
+}
