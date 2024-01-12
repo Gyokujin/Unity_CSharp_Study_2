@@ -1,0 +1,79 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Delegate3_2 : MonoBehaviour
+{
+    class Player
+    {
+        private delegate void BuffDelegate(); // 타입 정의
+        private BuffDelegate buffDelegate; // 객체 선언
+
+        public enum BuffKind
+        {
+            None,
+            Buff1,
+            BUff2
+        }
+
+        public BuffKind buff;
+        public BuffKind Buff
+        {
+            get
+            {
+                return buff;
+            }
+            set
+            {
+                if (buff == value)
+                    return;
+
+                buff = value;
+
+                if (buff == BuffKind.Buff1)
+                {
+                    buffDelegate = Buff1;
+                }
+                if (buff == BuffKind.BUff2)
+                {
+                    buffDelegate = Buff2;
+                }
+                if (buff == BuffKind.None)
+                {
+                    buffDelegate = NoneBuff;
+                }
+            }
+        }
+
+        public void Attack()
+        {
+            buffDelegate.Invoke();
+            Debug.Log("Attack");
+        }
+
+        void Buff1()
+        {
+            Debug.Log("Buff1");
+        }
+
+        void Buff2()
+        {
+            Debug.Log("Buff2");
+        }
+
+        void NoneBuff()
+        {
+            Debug.Log("NoneBuff");
+        }
+    }
+
+    void Start()
+    {
+        Player player = new Player();
+        Debug.Log(player.Buff);
+
+        player.Buff = Player.BuffKind.Buff1;
+        Debug.Log(player.Buff);
+        player.Attack();
+    }
+}
