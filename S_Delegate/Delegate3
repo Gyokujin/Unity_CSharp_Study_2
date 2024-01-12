@@ -1,0 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Delegate3 : MonoBehaviour
+{
+    // 콜백(CallBack) : 함수를 먼저 참조하고 나중에 호출한다.
+
+    class Player
+    {
+        public enum Buff
+        {
+            None,
+            Buff1,
+            BUff2
+        }
+
+        public Buff buff;
+
+        public void Attack(Buff buff)
+        {
+            if (buff == Buff.Buff1)
+            {
+                Buff1();
+            }
+            else if (buff == Buff.BUff2)
+            {
+                Buff2();
+            }
+            else if (buff == Buff.None)
+            {
+                NoneBuff();
+            }
+
+            Debug.Log("Attack");
+        }
+
+        void Buff1()
+        {
+            Debug.Log("Buff1");
+        }
+
+        void Buff2()
+        {
+            Debug.Log("Buff2");
+        }
+
+        void NoneBuff()
+        {
+            Debug.Log("NoneBuff");
+        }
+    }
+
+    void Start()
+    {
+        Player player = new Player();
+        player.buff = Player.Buff.Buff1;
+        player.Attack(player.buff);
+    }
+}
