@@ -1,0 +1,39 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DelegateChain1 : MonoBehaviour
+{
+    // 델리게이트 체인(Delegate Chain) : 델리게이트로 여러 함수를 동시에 참조
+
+    private delegate void TestDelegate(); // 델리게이트 타입 정의
+    private TestDelegate testDelegate; // 델리게이트 변수 선언
+
+    void Chain1()
+    {
+        Debug.Log("Chain1");
+    }
+
+    void Chain2()
+    {
+        Debug.Log("Chain2");
+    }
+
+    void Chain3()
+    {
+        Debug.Log("Chain3");
+    }
+
+    void Start()
+    {
+        TestDelegate test1 = new TestDelegate(Chain1);
+        TestDelegate test2 = new TestDelegate(Chain2);
+        TestDelegate test3 = new TestDelegate(Chain3);
+
+        testDelegate = Delegate.Combine(test1, test2) as TestDelegate;
+        testDelegate = Delegate.Combine(testDelegate, test3) as TestDelegate;
+
+        testDelegate();
+    }
+}
