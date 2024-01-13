@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class DelegateUIManager : MonoBehaviour
+{
+    public static DelegateUIManager instance;
+    [SerializeField]
+    private Text text;
+    [SerializeField]
+    private DelegateEnemy2 enemy2;
+    private int num;
+
+    void Start()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        num = 0;
+        text.text = "POINT : " + num.ToString();
+
+        enemy2.dieDelegate += AddScore;
+    }
+
+    public void AddScore(Vector3 pos)
+    {
+        num++;
+        text.text = "POINT : " + num.ToString();
+    }
+}
