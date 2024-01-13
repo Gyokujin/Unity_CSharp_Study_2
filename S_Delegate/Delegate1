@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Delegate : MonoBehaviour
+public class Delegate1 : MonoBehaviour
 {
     // 델리게이트(대리자) : 함수의 주소값을 가지고 대신 호출
     public delegate void MyDelegate(); // 델리게이트 타입의 정의 => 접근 제한자 + delegate + 반환 형식 + 식별자 + (매개변수)
