@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DelegateEvent2 : MonoBehaviour
+{
+    public delegate void DieDelegate2();
+    public event DieDelegate2 dieDelegate;
+
+    private int hp = 0;
+    private bool isDead = false;
+
+    void Start()
+    {
+        dieDelegate = OnDamaged;
+        Invoke("OnDamaged", 0.5f);
+    }
+
+    public void OnDamaged()
+    {
+        StartCoroutine(CoOnDamaged());
+    }
+
+    IEnumerator CoOnDamaged()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (hp <= 0 && !isDead)
+        {
+            Debug.Log("루틴");
+            StartCoroutine(CoDie());
+        }
+    }
+
+    IEnumerator CoDie()
+    {
+        isDead = true;
+        dieDelegate.Invoke();
+        Debug.Log("Die");
+
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
+}
