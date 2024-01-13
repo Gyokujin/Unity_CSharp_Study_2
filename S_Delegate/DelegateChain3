@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DelegateChain3 : MonoBehaviour
+{
+    private delegate void TestDelegate(); // 델리게이트 타입 정의
+    private TestDelegate testDelegate; // 델리게이트 변수 선언
+
+    void Chain1()
+    {
+        Debug.Log("Chain1");
+    }
+
+    void Chain2()
+    {
+        Debug.Log("Chain2");
+    }
+
+    void Chain3()
+    {
+        Debug.Log("Chain3");
+    }
+
+    void Start()
+    {
+        testDelegate = Chain1; // C# 2.0 버전부터는 new를 생략 가능하다.
+        testDelegate += Chain2;
+        testDelegate += Chain3;
+
+        testDelegate -= Chain2; // - 연산 또한 가능하다.
+        testDelegate -= Chain3;
+
+        testDelegate();
+    }
+}
