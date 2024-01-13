@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DelegateEnemy2 : MonoBehaviour
+{
+    public delegate void DieDelegate(Vector3 pos);
+    public DieDelegate dieDelegate;
+
+    private Animator animator;
+    private int hp = 2;
+    private bool isDead = false;
+
+    void Start()
+    {
+        // animator.SetInteger("Start", 0);
+        StartCoroutine(Die());
+    }
+
+    IEnumerator Die()
+    {
+        // 적이 죽을때 : 아이템 드롭, 파티클 재생, 스코어 증가
+        yield return new WaitForSeconds(2f);
+        isDead = true;
+        // animator.SetInteger("Start", 2);
+
+        dieDelegate.Invoke(transform.position);
+        Destroy(gameObject);
+    }
+}
