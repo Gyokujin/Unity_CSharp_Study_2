@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// event : 객체의 상태 변화나 사건의 발생을 알리는 용도. 외부에서 호출할 수 없다.
+public class TestDele
+{
+    public delegate void TestEvent();
+    public event TestEvent testEvent; // event 선언
+
+    public void StartEvent()
+    {
+        testEvent.Invoke();
+    }
+}
+
+public class DelegateEvent1 : MonoBehaviour
+{
+    void Start()
+    {
+        TestDele testDele = new TestDele();
+        testDele.testEvent += Test1;
+        testDele.testEvent += Test2;
+        testDele.testEvent += Test3;
+
+        testDele.StartEvent();
+    }
+
+    public void Test1()
+    {
+        Debug.Log("Test1");
+    }
+
+    public void Test2()
+    {
+        Debug.Log("Test2");
+    }
+
+    public void Test3()
+    {
+        Debug.Log("Test3");
+    }
+}
