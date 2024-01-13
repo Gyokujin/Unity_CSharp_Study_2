@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DelegateManager : MonoBehaviour
+{
+    public static DelegateManager instance;
+
+    [SerializeField]
+    private GameObject item;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private DelegateEnemy2 enemy2;
+
+    void Start()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        enemy2.dieDelegate += DropItem;
+    }
+
+    public void DropItem(Vector3 pos)
+    {
+        GameObject dropItem = Instantiate(item);
+        dropItem.transform.position = enemy.transform.position;
+    }
+}
