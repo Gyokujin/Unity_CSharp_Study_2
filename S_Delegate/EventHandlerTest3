@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EventTest2
+{
+    public string name;
+    public EventTest2(string name)
+    {
+        this.name = name;
+    }
+}
+
+public class EventHandlerTest3 : MonoBehaviour
+{
+    public event EventHandler<EventTest2> eventHandler;
+
+    void Start()
+    {
+        EventTest2 eventTest = new EventTest2("EventTest");
+
+        eventHandler += Test;
+        eventHandler.Invoke(this, eventTest);
+    }
+
+    void Test(object o, EventTest2 e)
+    {
+        Debug.Log("Test");
+        Debug.Log(e.name);
+    }
+}
