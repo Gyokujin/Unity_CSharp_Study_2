@@ -1,0 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace System
+{
+    public delegate void EventHandler(object sender, EventArgs e); // EventHandler 선언. object sender : 이벤트를 실행시키는 객체 (보통 this). EventArgs e : 이벤트 실행 시, 전달하고 싶은 정보가 있을때 사용
+}
