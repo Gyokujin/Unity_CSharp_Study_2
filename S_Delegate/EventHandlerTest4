@@ -1,0 +1,45 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EventTest3 : EventArgs
+{
+    private EventHandler eventHandler;
+    public event EventHandler EventHandler
+    {
+        add
+        {
+            Debug.Log("Add");
+            eventHandler += value;
+        }
+        remove
+        {
+            Debug.Log("Remove");
+            eventHandler -= value;
+        }
+    }
+
+    public void StartEvent()
+    {
+        eventHandler.Invoke(this, EventArgs.Empty);
+    }
+}
+
+public class EventHandlerTest4 : MonoBehaviour
+{
+    void Start()
+    {
+        EventTest3 eventTest3 = new EventTest3();
+
+        eventTest3.EventHandler += Test;
+        eventTest3.EventHandler -= Test;
+        eventTest3.EventHandler += Test;
+        eventTest3.StartEvent();
+    }
+
+    void Test(object o, EventArgs e)
+    {
+        Debug.Log("Test");
+    }
+}
