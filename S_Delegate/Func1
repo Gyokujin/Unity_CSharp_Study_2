@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Func1 : MonoBehaviour
+{
+    private Func<int> func; // Func : 반환타입이 있는 델리게이트
+
+    void Start()
+    {
+        func = () =>
+        {
+            int num2 = 3;
+            Debug.Log(num2);
+            return num2;
+        };
+
+        func += () =>
+        {
+            Debug.Log(int.MinValue);
+            return int.MinValue;
+        };
+
+        func += Test1;
+
+        int num1 = func.Invoke();
+    }
+
+    public int Test1()
+    {
+        int num3 = 3;
+        return num3;
+    }
+}
