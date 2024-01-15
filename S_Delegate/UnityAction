@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+public class UnityAction1 : MonoBehaviour
+{
+    UnityAction unityAction1; // UnityAction : Unity에서 만든 델리게이트. UnityEngine.Events 선언이 필요하다
+    UnityAction<int, int> unityAction2; // generic 또한 가능하다
+
+    public Button button;
+
+    void Start()
+    {
+        unityAction1 = () => Debug.Log("Button1");
+        button.onClick.AddListener(unityAction1); // UI 클릭시 실행되는 함수 연결에 쓰인다.
+        button.onClick.AddListener(() => Debug.Log("Button2"));
+
+        unityAction1 = Number1;
+        unityAction1();
+
+        unityAction2 = Number2;
+        unityAction2(4, 15);
+    }
+
+    void Number1()
+    {
+        Debug.Log("Number1");
+    }
+
+    void Number2(int num1, int num2)
+    {
+        Debug.Log(num1 + num2);
+    }
+}
