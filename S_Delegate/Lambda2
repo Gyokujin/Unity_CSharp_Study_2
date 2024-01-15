@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lambda2 : MonoBehaviour
+{
+    delegate int TestDelegate(int num1, int num2);
+
+    void Start()
+    {
+        TestDelegate testDelegate;
+        testDelegate = delegate (int num1, int num2) // 익명 메소드
+        {
+            return num1 + num2;
+        };
+
+        int result = testDelegate(3, 5);
+        Debug.Log(result);
+    }
+}
