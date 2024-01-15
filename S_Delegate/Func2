@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Func2 : MonoBehaviour
+{
+    void Start()
+    {
+        Func<int> func1 = () =>
+        {
+            return 1;
+        };
+
+        Func<int, int> func2 = (int num) => // Func(매개변수 타입, 반환타입)이다. 가장 마지막이 반환타입 이전은 매개변수로 이해하면 된다. Func(string a, int b, int c, string d)의 경우는 a,b,c는 매개변수 d는 반환타입이다.
+        {
+            return num;
+        };
+
+        Func<int, int, int> Func3 = Test;
+
+        int result1 = func1.Invoke();
+        int result2 = func2.Invoke(3);
+        int result3 = Func3.Invoke(3, 4);
+
+        Debug.Log(result1);
+        Debug.Log(result2);
+        Debug.Log(result3);
+    }
+
+    public int Test(int num2, int num3)
+    {
+        return num2 + num3;
+    }
+}
