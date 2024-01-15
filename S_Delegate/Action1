@@ -1,0 +1,24 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Action1 : MonoBehaviour
+{
+    private Action action; // Action : 반환타입이 없고, 매개변수가 없는 델리게이트. using System 선언 필요
+
+    void Start()
+    {
+        action = () => Debug.Log("Action1");
+        action += () => Debug.Log("Action2");
+        action += () => Debug.Log("Action3");
+        // action += Test1; Action은 반환타입과 매개변수가 없어야 하기 때문에 불가능하다. 이 단점을 보완하기 위해 Action<T> 을 사용한다.
+
+        action.Invoke();
+    }
+
+    public void Test1(int num)
+    {
+        Debug.Log(num);
+    }
+}
