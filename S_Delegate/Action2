@@ -1,0 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Action2 : MonoBehaviour
+{
+    private Action<int> action1; // Action<T>
+    private Action<int, int> action2;
+    private Action<string, string, string> action3;
+
+    void Start()
+    {
+        action1 = Test1; // 매개변수와 타입이 일치하기 때문에 체인이 가능하다.
+        action2 += Test2;
+        action3 = Test3;
+
+        action1.Invoke(3);
+        action2.Invoke(4, 11);
+        action3.Invoke("One", "Two", "Three");
+    }
+
+    public void Test1(int num)
+    {
+        Debug.Log(num);
+    }
+
+    public void Test2(int num1, int num2)
+    {
+        Debug.Log(num1 + num2);
+    }
+
+    public void Test3(string str1, string str2, string str3)
+    {
+        Debug.Log(str1 + str2 + str3);
+    }
+}
