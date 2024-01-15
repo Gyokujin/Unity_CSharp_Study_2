@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lambda3 : MonoBehaviour
+{
+    delegate void TestDelegate1();
+    delegate int TestDelegate2(int num1, int num2);
+    delegate int TestDelegate3(int num1, int num2);
+
+    void Start()
+    {
+        TestDelegate1 testDelegate1;
+        testDelegate1 = () => Debug.Log("TestFunction"); // 람다식 : 델리게이트 변수 = (매개변수 목록) => 식
+        testDelegate1.Invoke();
+
+        TestDelegate2 testDelegate2;
+        testDelegate2 = (num1, num2) => num1 + num2; // 매개변수의 자료형은 생략 가능하다
+        int result = testDelegate2(3, 5);
+        Debug.Log(result);
+
+        TestDelegate3 testDelegate3;
+        testDelegate3 = (num1, num2) => // 문 형식의 람다식
+        {
+            Debug.Log("Test");
+            return num1 + num2;
+        };
+
+        int result2 = testDelegate3(15, 4);
+        Debug.Log(result2);
+    }
+}
