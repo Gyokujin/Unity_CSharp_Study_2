@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lambda : MonoBehaviour
+{
+    // 익명메소드 : 이름이 없는 메소드, 델리게이트에 전달되는 메소드가 일회성으로 필요할 때 사용
+
+    private delegate void TestDelegate();
+
+    void Start()
+    {
+        TestDelegate testDelegate;
+        testDelegate = delegate () // 델리게이트 변수 = delegate(매개변수 목록)
+        {
+            Debug.Log("TestFunction");
+        };
+
+        testDelegate.Invoke();
+    }
+}
