@@ -1,0 +1,27 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Predicate1 : MonoBehaviour
+{
+    Predicate<int> predicate; // 반환타입은 bool만 가능하다
+    
+    void Start()
+    {
+        predicate = (int num) => // 해당 델리게이트에서 참과 거짓을 반환하는데에 쓰인다.
+        {
+            if (num > 10)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        };
+
+        bool b = predicate(3);
+        Debug.Log(b);
+    }
+}
