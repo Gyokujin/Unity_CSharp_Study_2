@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lambda4 : MonoBehaviour
+{
+    delegate void TestDelegate();
+
+    void Start()
+    {
+        TestDelegate testDelegate;
+        testDelegate = () => Debug.Log("TestFunction1");
+        testDelegate += () => Debug.Log("TestFunction2"); // 델리게이트 체인의 구독은 람다식으로 가능하다.
+        testDelegate -= () => Debug.Log("TestFunction2"); // 구독 해지는 람다식으로 불가능하다.
+
+        testDelegate.Invoke();
+    }
+}
