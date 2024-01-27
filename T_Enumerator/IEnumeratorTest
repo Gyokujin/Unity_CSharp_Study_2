@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Collections;
+
+public class IEnumeratorTest : MonoBehaviour
+{
+    public class MyList
+    {
+        public enumerator GetEnumerator()
+        {
+            enumerator enumerator = new enumerator();
+            return enumerator;
+        }
+
+        public class enumerator : IEnumerator
+        {
+            int[] num = new int[5] { 1, 2, 3, 4, 5 };
+            int index = -1;
+            public object Current { get { return num[index]; } } // 현재 요소 반환
+
+            public bool MoveNext() // 다음 요소 이동 / 이동이 성공하면 true, 더이상 이동할 요소가 없으면 false
+            {
+                if (index == num.Length - 1)
+                    return false;
+
+                index++;
+                return index < num.Length;
+            }
+
+            public void Reset()
+            {
+                index = -1;
+            }
+        }
+    }
+
+    void Start()
+    {
+        MyList myList = new MyList();
+        foreach (var one in myList)
+            Debug.Log(one);
+    }
+}
