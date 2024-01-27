@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class IEnumeratorTest2 : MonoBehaviour
+{
+    public class MyList
+    {
+        public IEnumerator GetEnumerator()
+        {
+            int[] num = new int[5] { 1, 2, 3, 4, 5 };
+            int index = -1;
+
+            while (index < num.Length - 1)
+            {
+                index++;
+                yield return num[index];
+            }
+        }
+    }
+
+    void Start()
+    {
+        MyList myList = new MyList();
+
+        foreach (var one in myList)
+        {
+            Debug.Log(one);
+        }
+    }
+}
