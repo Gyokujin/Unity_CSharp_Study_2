@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enumerator : MonoBehaviour
+{
+    // Enumerator(열거자) : 데이터 요소를 하나씩 리턴하는 기능. C#에서는 IEnumerator 인터페이스를 이용해서 구현할 수 있다.
+    
+    public class MyList
+    {
+        int[] num = new int[5] { 1, 2, 3, 4, 5 };
+
+        public enumerator GetEnumerator()
+        {
+            enumerator enumerator = new enumerator();
+            return enumerator;
+        }
+
+        public class enumerator
+        {
+            public object Current { get; }
+
+            public bool MoveNext()
+            {
+                return true;
+            }
+        }
+    }
+
+    void Start()
+    {
+        MyList myList = new MyList();
+
+        //foreach (var one in myList) // foreach 문을 실행하기 위해서는 루프 대상이 MoveNext()메서드와 Current 프로퍼티를 가지고 있는 GetEnumerator() 메서드가 있어야 한다.
+        //{
+        //    Debug.Log(one);
+        //}
+
+        List<int> list = new List<int>() { 2, 3, 4, 5, 6 }; // List는 기본적인 GetEnumerator() 메서드가 포함되어 있다.
+    }
+}
