@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Coroutine4 : MonoBehaviour
+{
+    public Image image;
+    private float alpha = 0f;
+    private float fadeTime = 3.0f;
+
+    void Start()
+    {
+        StartCoroutine(FadeIn()); // StartCoroutine : 코루틴 실행 메서드
+        // StartCoroutine("FadeIn"); // 이 방식으로도 가능하지만 특별한 경우가 아니라면 비추천. 매개변수를 하나만 받을 수 있다.
+    }
+
+    IEnumerator FadeIn()
+    {
+        while (alpha < 1.0f)
+        {
+            alpha += Time.deltaTime / fadeTime;
+            image.color = new Color(1, 1, 1, alpha);
+            yield return null;
+
+            if (alpha > 0.5f)
+            {
+                image.color = new Color(1, 1, 1, 1);
+                yield break; // yield break를 만나면 코루틴이 종료된다.
+            }
+        }
+    }
+}
