@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Coroutine3 : MonoBehaviour
+{
+    void Start()
+    {
+        StartCoroutine(Count());
+    }
+
+    IEnumerator Count()
+    {
+        Debug.Log("1");
+        yield return new WaitForSeconds(1.0f); // 해당 시간만큼 지연하며 다음 줄부터 실행되는 프레임이 바뀐다.
+
+        Debug.Log("2");
+        yield return new WaitForSeconds(1.0f);
+
+        Debug.Log("3");
+    }
+}
