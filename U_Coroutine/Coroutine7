@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Coroutine7 : MonoBehaviour
+{
+    int cnt = 0;
+
+    void Start()
+    {
+        StartCoroutine(WaitLoop());
+    }
+
+    void Update()
+    {
+        if (cnt < 1000)
+            cnt++;
+
+        Debug.Log(cnt);
+    }
+
+    IEnumerator WaitLoop()
+    {
+        yield return new WaitUntil(() => cnt == 1000); // 해당 조건이 참이 될 때까지 대기한다.
+
+        Debug.LogError("1000");
+    }
+}
