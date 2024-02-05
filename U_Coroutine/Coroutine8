@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Coroutine8 : MonoBehaviour
+{
+    IEnumerator Start() // Start 함수를 코루틴으로 변경 가능하다.
+    {
+        yield return null;
+    }
+
+    IEnumerator OnCollisionEnter() // 물리법칙
+    {
+        yield return null;
+    }
+
+    IEnumerator OnMouseEnter() // 입력
+    {
+        yield return null;
+    }
+
+    IEnumerator OnBecameInvisible() // 렌더링
+    {
+        yield return null;
+    }
+}
