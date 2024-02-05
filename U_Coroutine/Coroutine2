@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Coroutine2 : MonoBehaviour
+{
+    // 코루틴(Coroutine) : Enumerator를 이용해서 여러 프레임에 걸쳐 실행된다.
+    public Image image;
+    private float alpha = 0f;
+    private float fadeTime = 3.0f;
+
+    void Start()
+    {
+        StartCoroutine(FadeIn()); // 가급적 이 방식으로 사용한다.
+    }
+
+    IEnumerator FadeIn() // MonoBehaviour를 상속받아야 한다.
+    {
+        while (alpha < 1.0f)
+        {
+            alpha += Time.deltaTime / fadeTime;
+            image.color = new Color(1, 1, 1, alpha);
+            yield return null; // 한 프레임을 지연시킨다. 주로 while 문 안에서 실행한다.
+        }
+    }
+}
