@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Coroutine1 : MonoBehaviour
+{
+    public Image image;
+    private float alpha = 0f;
+    private float fadeTime = 3.0f;
+
+    void Start()
+    {
+        // FadeIn();
+    }
+
+    void Update()
+    {
+        if (alpha < 1.0f) // Update의 매 프레임마다 호출을 이용하여 이미지 알파값을 조절할 수 있다.
+        {
+            alpha += Time.deltaTime / fadeTime;
+            image.color = new Color(1, 1, 1, alpha);
+        }
+    }
+
+    void FadeIn()
+    {
+        //while (alpha < 1.0f) // 일반적인 메서드는 한 프레임에 계산을 다하여 결과값이 나타난다.
+        //{
+        //    alpha += Time.deltaTime / fadeTime;
+        //    image.color = new Color(1, 1, 1, alpha);
+        //}
+    }
+}
