@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Coroutine9 : MonoBehaviour
+{
+    float countTime = 1.0f;
+    WaitForSeconds countWait;
+
+    void Start()
+    {
+        countWait = new WaitForSeconds(countTime); // 미리 WaitForSeconds를 캐싱 할 수 있다.(메모리 절약에 좋다)
+        StartCoroutine(Count()); // 코루틴을 실행할 때에는 가비지 컬렉션이 발생한다. 반복하여 실행시킬 때에는 Update를 사용하는 게 더 적합하다.
+    }
+
+    void Update()
+    {
+
+    }
+
+    IEnumerator Count()
+    {
+        Debug.Log("1");
+        yield return countWait; // 미리 선언했던 waitforseconds를 호출한다.
+
+        Debug.Log("2");
+        yield return countWait;
+
+        Debug.Log("3");
+    }
+}
